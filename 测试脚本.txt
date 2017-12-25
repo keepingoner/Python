@@ -1,0 +1,38 @@
+自动化测试
+
+pip install requests
+
+#coding：utf-8
+# 不带参数的get请求
+
+import requests
+
+def get_demo():
+    url = 'http://www.baidu.com'
+    r = requests.get(url)
+    print(r.url)
+    print(r.status_code)
+
+if __name__ == '__main__':
+    get_demo()
+
+
+
+测试用户登录 脚本
+
+def test_admin_user_login(self):
+    '''
+	测试用户登录 
+    by:Harmo
+    :return:
+    '''
+    url = '%s%s' %(self.base_url,'/task/admin-user-login/')
+    params = dict(
+	user = 'admin',
+	password = '222222',
+    )
+    res = requests.post(url, data = params)
+    print (res.text)
+    res_dict = json.loads(res.text)
+    self.assertEqual(res_dict['code]'),200)
+
